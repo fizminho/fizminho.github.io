@@ -1,39 +1,4 @@
-<?php
-include('config.php');
 
-
-
-
-    function get_room(){
-        include "config.php";
-        
-
-        $sql = "SELECT bilik_id, bilik_nama FROM `bilik`";
-        $result = $mysqli->query($sql);
-
-        if ($result->num_rows > 0) 
-        {
-        echo "<select class='selectpicker' name='bilik_id' id='bilik_id'>";
-        // output data of each row
-        while($row = $result->fetch_assoc()) {
-            
-        
-            echo "<option value=". $row["bilik_id"].">" . $row["bilik_nama"]."</option>";
-            
-            }
-        echo "</select>";
-        }
-        else 
-        {
-            echo "Tiada Bilik";
-        }
-        $mysqli->close();
-    }
-
-
-
-
-?>
 <!DOCTYPE html>
 <!--[if IE 7 ]><html class="ie ie7 lte9 lte8 lte7" lang="en-US"><![endif]-->
 <!--[if IE 8]><html class="ie ie8 lte9 lte8" lang="en-US">	<![endif]-->
