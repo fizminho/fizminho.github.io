@@ -1,0 +1,281 @@
+<?php
+include('config.php');
+
+
+
+
+    function get_room(){
+        include "config.php";
+        
+
+        $sql = "SELECT bilik_id, bilik_nama FROM `bilik`";
+        $result = $mysqli->query($sql);
+
+        if ($result->num_rows > 0) 
+        {
+        echo "<select class='selectpicker' name='bilik_id' id='bilik_id'>";
+        // output data of each row
+        while($row = $result->fetch_assoc()) {
+            
+        
+            echo "<option value=". $row["bilik_id"].">" . $row["bilik_nama"]."</option>";
+            
+            }
+        echo "</select>";
+        }
+        else 
+        {
+            echo "Tiada Bilik";
+        }
+        $mysqli->close();
+    }
+
+
+
+
+?>
+<!DOCTYPE html>
+<!--[if IE 7 ]><html class="ie ie7 lte9 lte8 lte7" lang="en-US"><![endif]-->
+<!--[if IE 8]><html class="ie ie8 lte9 lte8" lang="en-US">	<![endif]-->
+<!--[if IE 9]><html class="ie ie9 lte9" lang="en-US"><![endif]-->
+<!--[if (gt IE 9)|!(IE)]><!-->
+<html class="noIE" lang="en-US">
+<!--<![endif]-->
+	<head>
+		<!-- meta -->
+			<meta http-equiv="X-UA-Compatible" content="IE=edge">
+			<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+			<meta name="viewport" content="width=device-width, initial-scale = 1.0, maximum-scale=1.0, user-scalable=no"/>
+	<title>DJELUTONG TEMPAHAN</title>
+
+	<link rel="stylesheet" href="assets/css/bootstrap.min.css">
+	<link rel="stylesheet" href="assets/css/ionicons.min.css">
+	<link rel="stylesheet" href="assets/css/owl.carousel.css">
+	<link rel="stylesheet" href="assets/css/owl.theme.css">
+	<link rel="stylesheet" href="assets/css/flexslider.css" type="text/css">
+    <link rel="stylesheet" href="assets/css/main.css">
+    <link rel="stylesheet" type="text/css" href="assets/css/bootstrap-select.css">
+    <link rel="stylesheet" href="assets/css/bootstrap-select.min.css">
+    
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+			<!--[if lt IE 9]>
+				<script src="assets/js/html5shiv.js"></script>
+				<script src="assets/js/respond.js"></script>
+			<![endif]-->
+
+			<!--[if IE 8]>
+		    	<script src="assets/js/selectivizr.js"></script>
+		    <![endif]-->
+</head>
+<body>
+    <section class="header">
+	<nav class="navbar navbar-default navbar-fixed-top">
+		<div class="container">
+		<!-- Brand and toggle get grouped for better mobile display -->
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+					<span class="sr-only">Toggle navigation</span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+                <a class="navbar-brand" href="index.php" title="HOME"><img src="assets/images/logo.jpg"  width="100" height="100"/></a>
+			</div> <!-- /.navbar-header -->
+
+	    <!-- Collect the nav links, forms, and other content for toggling -->
+		    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+				<ul class="nav navbar-nav navbar-right">
+					<li class="active"><a href="index.php">Home</a></li>
+					<li><a href="tentang.php">Tentang Kami</a></li>
+                    <li><a href="senaraibilik.php">Galeri</a></li>
+					<li><a href="hubungi.php">Hubungi Kami</a></li>
+                    <li class="dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false" href="#"> DAFTAR AKAUN</a>
+                        
+                        <ul class="dropdown-menu" role="menu">
+                            <div class="col-lg-12">
+                                <div class="text-center"><p><b>Pendaftaran</b></p></div>
+								<form id="ajax-register-form" action="php-daftar.php" method="post" role="form" autocomplete="off">
+									<div class="form-group">
+										<input type="text" name="username" id="username" tabindex="1" class="form-control" placeholder="Username" value="">
+									</div>
+									<div class="form-group">
+										<input type="text" name="password" id="password" tabindex="1" class="form-control" placeholder="Kata Laluan" value="">
+									</div>
+									<div class="form-group">
+										<input type="text" name="custNamaFull" id="custNamaFull" tabindex="2" class="form-control" placeholder="Nama Penuh">
+									</div>
+									<div class="form-group">
+										<input type="text" name="custAlmt" id="custAlmt" tabindex="2" class="form-control" placeholder="Alamat">
+									</div>
+                                    <div class="form-group">
+										<input type="number" name="custTel" id="custTel" tabindex="2" class="form-control" placeholder="Nombor Telefon">
+									</div>
+                                    <div class="form-group">
+										<input type="email" name="custEmail" id="custEmail" tabindex="2" class="form-control" placeholder="E-mail">
+									</div>
+                                    <div>
+    								<input type="submit" name="submit" id="submit" class="form-control btn btn-info" value="DAFTAR">
+    											</div>
+                                </form></div></ul>
+                        
+                        <li class="dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false" href="#"> LOG MASUK</a>
+                        
+                        <ul class="dropdown-menu" role="menu">
+                            <div class="col-lg-12">
+                                <div class="text-center"><p><b>Log Masuk</b></p></div>
+								<form id="ajax-register-form" action="php-logmasuk.php" method="post" role="form" autocomplete="off">
+									<div class="form-group">
+										<input type="text" name="username" id="username" tabindex="1" class="form-control" placeholder="Username" value="">
+									</div>
+									<div class="form-group">
+										<input type="password" name="password" id="password" tabindex="2" class="form-control" placeholder="Password">
+									</div>
+                                     <div>
+                                    <input type="radio" name="user" value="pengguna"> Pengguna<br>
+                                    <input type="radio" name="user" value="pekerja"> Pekerja<br> </div>
+                                    <div>
+    								<input type="submit" name="submit" id="submit" class="form-control btn btn-info" value="Log Masuk">
+    											</div>
+                                </form></div></ul>
+                        
+                        
+                        
+                        
+                        
+                        <!--<ul class="dropdown-menu dropdown-menu-right" role="menu">
+                            <li><a href="daftar.php">Daftar </a></li>
+                            <li><a href="#">Log Masuk </a></li>
+                        </ul>-->
+                    </li>
+				</ul> <!-- /.nav -->
+		    </div><!-- /.navbar-collapse -->
+	  	</div><!-- /.container -->  
+	</nav>
+        </section>
+
+
+<!-- Find a Tour -->
+	<section class="tour section-wrapper container">
+		<h2 class="section-title">
+			Bilik
+		</h2>
+		<p class="section-subtitle">
+            <b>Semak Ketersediaan Bilik</b><br><br>
+		</p>
+        <div  class="row" > 
+            
+            
+
+      
+            <form action="p-ketersediaan.php" method="post">
+            <div style="text-align:right"class="col-sm-1"><label><p>Tarikh Masuk</p></label></div>
+            <div class="col-sm-3">
+                
+                
+				<div class="input-group">
+                    
+					<input id="start_date" name="start" type="date" class="form-control border-radius" placeholder="Tarikh Masuk"/>
+                    
+	
+				</div>
+			</div>
+            
+            <div style="text-align:right"class="col-sm-1"><label><p>Tarikh Keluar</p></label></div>
+			<div class="col-sm-3">
+              
+				<div class="input-group">
+					<input id="end_date" name="end" type="date" class="form-control border-radius" placeholder="Tarikh Keluar"/>
+
+				</div>
+			</div>
+                
+            <div style="text-align:right"class="col-sm-1"><label><p>Pilih Bilik</p></label></div>
+
+
+			<div class="col-sm-3">
+                <input name="submit" type="submit" class="btn btn-default border-radius custom-button" value="Cari" />  				
+                       <?php
+                    get_room();                
+                ?> 
+				
+				<br><br><br>
+            </div>
+            </form>
+		</div>
+        
+        <script>
+        var today = new Date();<!-- checkin calendar-->
+        var today2 = new Date();<!-- checkout calendar-->
+        var dd = today.getDate() +0;
+        var dd2 = today2.getDate()+1;
+        var mm = today.getMonth()+1; //January is 0!
+        var yyyy = today.getFullYear();
+         if(dd<10 || dd2<10){
+                dd='0'+dd
+                dd2='0'+dd2
+            }
+            if(mm<10){
+                mm='0'+mm
+            }
+
+        today = yyyy+'-'+mm+'-'+dd;
+        today2 = yyyy+'-'+mm+'-'+dd2;
+        document.getElementById("start_date").setAttribute("min", today);
+        document.getElementById("end_date").setAttribute("min", today2);
+            
+    </script>
+	</section> <!-- /.tour -->
+
+    
+
+
+	
+
+
+		<div class="container">
+            <p align="center"><img src="assets/images/banner.jpg"/><br></p>
+				
+		</div> <br><br><br> 
+ 
+					
+
+
+		
+	<footer>
+		<div class="container">
+			<div class="row">
+				<div class="col-xs-4">
+					<div class="text-left">
+						D'Jelutong Homestay
+					</div>
+				</div>
+				<div class="col-xs-4">
+					<a href="https://www.facebook.com/D-Jelutong-Homestay-451522074924512/?ref=br_rs">Laman Facebook</a>
+				</div>
+				
+			</div>
+		</div>		
+	</footer>
+
+
+	<script src="assets/js/jquery-1.11.2.min.js"></script>
+    <script src="assets/js/bootstrap.min.js"></script>
+    <script src="assets/js/owl.carousel.min.js"></script>
+    <script src="assets/js/contact.js"></script>
+    <script src="assets/js/jquery.flexslider.js"></script>
+	<script src="assets/js/script.js"></script>
+    <script src="assets/js/bootstrap-select.js"></script>
+
+<script>
+  $(document).ready(function () {
+    $('.selectpicker').selectpicker();
+  });
+</script>
+
+
+
+
+</body>
+</html>
